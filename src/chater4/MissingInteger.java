@@ -36,13 +36,12 @@ public class MissingInteger {
             // other
             for(int i = 1; i < positiveArray.size(); i++) {
                 if(positiveArray.get(i-1) - positiveArray.get(i) < -1) {
-                    result = positiveArray.get(i-1) + 1;
-                    break;
-                }
-                if(i == positiveArray.size()-1) {
-                    result = positiveArray.get(i) + 1;
+                    return positiveArray.get(i-1) + 1;
                 }
             }
+
+            // last
+            return positiveArray.get(positiveArray.size()-1) + 1;
 
         } else if(positiveArray.size() == 1){
             // ex { 1 }

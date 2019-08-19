@@ -1,4 +1,4 @@
-package chater4;
+package chapter4;
 
 import java.util.ArrayList;
 import java.util.Arrays;

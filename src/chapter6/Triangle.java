@@ -30,7 +30,7 @@ public class Triangle {
 
     //https://app.codility.com/demo/results/trainingCH6R6G-FW5/
     //O(N^3)
-    /*private static int solution(int[] A) {
+    private static int solution2(int[] A) {
 
         for(int i = 0; i < A.length - 2; i++) {
             int P = A[i];
@@ -48,5 +48,5 @@ public class Triangle {
         }
 
         return 0;
-    }*/
+    }
 }

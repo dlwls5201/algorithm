@@ -2,7 +2,6 @@ package chapter8;
 
 import java.util.HashMap;
 
-//https://app.codility.com/demo/results/training4ANHYB-DM4/
 public class EquiLeader {
 
     /**
@@ -12,12 +11,24 @@ public class EquiLeader {
 
         int[] A = {4, 3, 4, 4, 4, 2};
 
-        int result = solution(A);
+        int result = solution2(A);
         System.out.println("result : " + result);
 
     }
 
-    private static int solution(int[] A) {
+    private static int solution2(int[] A) {
+
+        int cases = 0;
+
+        int leader = dominator(A);
+        System.out.println("leader : " + leader);
+
+        return cases;
+    }
+
+    //https://app.codility.com/demo/results/training4ANHYB-DM4/
+    //O(n^2)
+    private static int solution1(int[] A) {
 
         int cases = 0;
 

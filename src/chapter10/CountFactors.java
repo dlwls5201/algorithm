@@ -10,11 +10,11 @@ public class CountFactors {
         System.out.println("result : " + result);
     }
 
-    //https://app.codility.com/demo/results/training8SAZN5-D7X/
+    //https://app.codility.com/demo/results/trainingPJ7J3S-JFX/
     //O(sqrt(N))
     private static int solution1(int N) {
 
-        int i = 1;
+        double i = 1;
         int result = 0;
 
         while (i * i < N) {

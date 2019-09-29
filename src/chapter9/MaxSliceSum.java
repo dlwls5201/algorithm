@@ -7,14 +7,30 @@ public class MaxSliceSum {
      */
     public static void main(String[] args) {
 
-        //int[] A = {3, 2, -6, 4, 0};
+        int[] A = {3, 2, -6, 4, 0};
         //int[] A = {-10};
         //int[] A = {5, -7, 3, 5, -2, 4, -1};
-        int[] A = {-20000, -1, -10};
+        //int[] A = {-20000, -1, -10};
 
-        int result = solution2(A);
+        int result = solution3(A);
         System.out.println("result : " + result);
 
+    }
+
+    //https://app.codility.com/demo/results/trainingJ3694H-EGD/
+    private static int solution3(int[] A) {
+
+        int slice = 0;
+        int max = A[0];
+
+        for (int a : A) {
+
+            slice = Math.max(a, slice + a);
+            max = Math.max(max, slice);
+
+        }
+
+        return max;
     }
 
     /**

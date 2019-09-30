@@ -17,11 +17,25 @@ public class Flags {
 
     private int solution2(int[] A) {
 
+        //find peek
+        ArrayList<Integer> peeks = new ArrayList<>();
+
+        for (int i = 1; i < A.length - 1; i++) {
+            if (A[i - 1] < A[i] && A[i] > A[i + 1]) {
+                peeks.add(i);
+            }
+        }
+
+        if(peeks.size() == 1) return 1;
+
+
+
+
         return 0;
     }
 
     //https://app.codility.com/demo/results/training3B8H45-FQJ/
-    //not correct
+    //not correctness not performance
     private int solution1(int[] A) {
 
         //find peek

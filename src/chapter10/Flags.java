@@ -16,6 +16,7 @@ public class Flags {
         System.out.println("result : " + result);
     }
 
+    //https://marioqs.wordpress.com/2015/11/03/flags-from-codility/
     private int solution3(int[] A) {
 
         //find peek index

@@ -1,6 +1,7 @@
 package chapter10;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Flags {
 
@@ -15,51 +16,83 @@ public class Flags {
         System.out.println("result : " + result);
     }
 
+    //https://sweetroute.tistory.com/entry/CodilityFlags
+    //solution1과 동일 -> 순서만 반대
     private int solution2(int[] A) {
 
-        //find peek
-        ArrayList<Integer> peeks = new ArrayList<>();
+        //find peek index
+        List<Integer> peaks = new ArrayList<>();
 
         for (int i = 1; i < A.length - 1; i++) {
             if (A[i - 1] < A[i] && A[i] > A[i + 1]) {
-                peeks.add(i);
+                peaks.add(i);
             }
         }
 
-        if(peeks.size() == 1) return 1;
+        System.out.println("peaks : " + peaks);
 
+        //예외 처리 : {1, 3, 2} -> 1개 , {1, 3, 2, 3, 1} -> 2개
+        if (peaks.size() < 3) return peaks.size();
 
+        int result = 0;
 
-
-        return 0;
-    }
-
-    //https://app.codility.com/demo/results/training3B8H45-FQJ/
-    //not correctness not performance
-    private int solution1(int[] A) {
-
-        //find peek
-        ArrayList<Integer> peeks = new ArrayList<>();
-
-        for (int i = 1; i < A.length - 1; i++) {
-            if (A[i - 1] < A[i] && A[i] > A[i + 1]) {
-                peeks.add(i);
-            }
-        }
-
-        if(peeks.size() == 1) return 1;
-
-        for (int k = peeks.size(); k >= 1; k--) {
+        for (int k = 2; k <= peaks.size(); k++) {
 
             int index = 0;
             int point = 0;
-            int chance = peeks.size() - k;
+            int chance = peaks.size() - k;
 
-            for (int j = 0; j < peeks.size() - 1; j++) {
+            for (int i = 0; i < peaks.size() - 1; i++) {
 
-                if (Math.abs(peeks.get(index) - peeks.get(j + 1)) >= k) {
+                if (Math.abs(peaks.get(index) - peaks.get(i + 1)) >= k) {
+                    index = i + 1;
                     point++;
-                    index = j;
+
+                    if(point == k - 1) {
+                        result = k;
+                        break;
+                    }
+
+                } else {
+
+                    chance--;
+                    if(chance < 0) break;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    //https://app.codility.com/demo/results/trainingXJNXQ7-79H/
+    //no performance
+    private int solution1(int[] A) {
+
+        //find peek index
+        List<Integer> peaks = new ArrayList<>();
+
+        for (int i = 1; i < A.length - 1; i++) {
+            if (A[i - 1] < A[i] && A[i] > A[i + 1]) {
+                peaks.add(i);
+            }
+        }
+
+        System.out.println("peaks : " + peaks);
+
+        //예외 처리 : {1, 3, 2} -> 1개 , {1, 3, 2, 3, 1} -> 2개
+        if (peaks.size() < 3) return peaks.size();
+
+        for (int k = peaks.size(); k >= 1; k--) {
+
+            int index = 0;
+            int point = 0;
+            int chance = peaks.size() - k;
+
+            for (int j = 0; j < peaks.size() - 1; j++) {
+
+                if (Math.abs(peaks.get(index) - peaks.get(j + 1)) >= k) {
+                    index = j + 1;
+                    point++;
                     if (point == k - 1) return k;
                 } else {
                     chance--;

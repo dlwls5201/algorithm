@@ -12,8 +12,34 @@ public class Flags {
 
         int[] A = {1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2}; // 3
         //int[] A = {1, 3, 2}; // 1
-        int result = new Flags().solution2(A);
+        int result = new Flags().solution3(A);
         System.out.println("result : " + result);
+    }
+
+    private int solution3(int[] A) {
+
+        //find peek index
+        List<Integer> peaks = new ArrayList<>();
+
+        for (int i = 1; i < A.length - 1; i++) {
+            if (A[i - 1] < A[i] && A[i] > A[i + 1]) {
+                peaks.add(i);
+            }
+        }
+
+        System.out.println("peaks : " + peaks);
+
+        //예외 처리 : {1, 3, 2} -> 1개 , {1, 3, 2, 3, 1} -> 2개
+        if (peaks.size() < 3) return peaks.size();
+
+        int result = 0;
+
+        for (int k = 2; k <= peaks.size(); k++) {
+
+
+        }
+
+        return result;
     }
 
     //https://sweetroute.tistory.com/entry/CodilityFlags
